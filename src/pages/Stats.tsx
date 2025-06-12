@@ -1,9 +1,9 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Shield, BarChart3, TrendingUp, MapPin, AlertTriangle, Users, Calendar, Clock } from 'lucide-react';
+import { Shield, BarChart3, TrendingUp, MapPin, AlertTriangle, Users, Calendar, Clock, User, Info } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { Progress } from '@/components/ui/progress';
 
 const Stats = () => {
   // Mock data for demonstration
@@ -34,6 +34,38 @@ const Stats = () => {
       { month: 'Apr', reports: 312 },
       { month: 'May', reports: 289 },
       { month: 'Jun', reports: 356 }
+    ],
+    driverReviews: [
+      {
+        id: "D-12345",
+        name: "John Martinez",
+        license: "CDL-TX-789456",
+        totalRating: 4.2,
+        overallRating: 4.5,
+        ratingTrend: [4.1, 3.8, 4.0, 4.3, 4.2],
+        safetyScore: 85,
+        status: "Good standing, monitor speed compliance",
+        trainingProgress: {
+          courseName: "Defensive Driving Training",
+          description: "Designed to improve road safety and reduce incident reports.",
+          progress: 65
+        }
+      },
+      {
+        id: "D-67890",
+        name: "Sarah Johnson",
+        license: "CDL-CA-123789",
+        totalRating: 3.6,
+        overallRating: 4.5,
+        ratingTrend: [3.2, 3.4, 3.8, 3.5, 3.6],
+        safetyScore: 72,
+        status: "Average performance, contact HR for guidance",
+        trainingProgress: {
+          courseName: "Team Diversity Training",
+          description: "Designed to foster inclusivity and leverage diverse perspectives.",
+          progress: 25
+        }
+      }
     ]
   };
 
@@ -135,6 +167,121 @@ const Stats = () => {
             </Card>
           </div>
 
+          {/* Driver Reviews Section */}
+          <div className="mb-12">
+            <h2 className="text-2xl font-bold text-slate-800 mb-6">Driver Performance Reviews</h2>
+            <div className="grid lg:grid-cols-2 gap-6">
+              {statsData.driverReviews.map((driver) => (
+                <div key={driver.id} className="space-y-4">
+                  {/* Employee Rating Card */}
+                  <div className="bg-slate-800 text-white rounded-2xl p-6">
+                    <div className="flex items-center justify-between mb-6">
+                      <div className="flex items-center space-x-3">
+                        <div className="bg-slate-700 p-2 rounded-lg">
+                          <User className="h-5 w-5" />
+                        </div>
+                        <h3 className="text-xl font-semibold">Driver Rating</h3>
+                      </div>
+                      <button className="bg-slate-700 hover:bg-slate-600 px-4 py-2 rounded-lg text-sm transition-colors">
+                        Details
+                      </button>
+                    </div>
+
+                    <div className="border-t border-slate-700 pt-6">
+                      <div className="flex items-center justify-between mb-4">
+                        <div>
+                          <p className="text-slate-400 text-sm uppercase tracking-wide mb-2">TOTAL RATING</p>
+                          <div className="flex items-center space-x-3">
+                            <div className="text-yellow-400 text-2xl">⭐</div>
+                            <span className="text-3xl font-bold">{driver.totalRating}/5</span>
+                            <span className="text-slate-400">(Overall {driver.overallRating})</span>
+                          </div>
+                        </div>
+                        <div className="w-32 h-16">
+                          {/* Simple trend line visualization */}
+                          <svg className="w-full h-full" viewBox="0 0 120 60">
+                            <path
+                              d={`M 0 ${60 - (driver.ratingTrend[0] - 3) * 20} ${driver.ratingTrend.map((rating, index) => 
+                                `L ${(index + 1) * 24} ${60 - (rating - 3) * 20}`
+                              ).join(' ')}`}
+                              fill="none"
+                              stroke="#8b5cf6"
+                              strokeWidth="3"
+                              className="drop-shadow-sm"
+                            />
+                          </svg>
+                        </div>
+                      </div>
+
+                      <div className="bg-slate-700/50 rounded-lg p-4 flex items-center justify-between">
+                        <span className="text-slate-300 text-sm">{driver.status}</span>
+                        <Info className="h-4 w-4 text-slate-400" />
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Course Progress Card */}
+                  <div className="bg-slate-800 text-white rounded-2xl p-6">
+                    <div className="flex items-center justify-between mb-6">
+                      <div className="flex items-center space-x-3">
+                        <div className="bg-slate-700 p-2 rounded-lg">
+                          <BarChart3 className="h-5 w-5" />
+                        </div>
+                        <h3 className="text-xl font-semibold">Training Progress</h3>
+                      </div>
+                      <button className="bg-slate-700 hover:bg-slate-600 px-4 py-2 rounded-lg text-sm transition-colors">
+                        See All
+                      </button>
+                    </div>
+
+                    <div className="border-t border-slate-700 pt-6">
+                      <div className="flex items-start space-x-4">
+                        <div className="relative">
+                          <div className="w-20 h-20 rounded-full border-4 border-slate-700 flex items-center justify-center">
+                            <div className="text-2xl font-bold">{driver.trainingProgress.progress}%</div>
+                          </div>
+                          <svg className="absolute top-0 left-0 w-20 h-20 -rotate-90">
+                            <circle
+                              cx="40"
+                              cy="40"
+                              r="36"
+                              fill="none"
+                              stroke="#8b5cf6"
+                              strokeWidth="4"
+                              strokeDasharray={`${driver.trainingProgress.progress * 2.26} 226`}
+                              className="transition-all duration-500"
+                            />
+                          </svg>
+                        </div>
+                        <div className="flex-1">
+                          <h4 className="text-lg font-semibold mb-2">{driver.trainingProgress.courseName}</h4>
+                          <p className="text-slate-400 text-sm mb-4">{driver.trainingProgress.description}</p>
+                          <button className="text-purple-400 hover:text-purple-300 text-sm underline transition-colors">
+                            Resume Course
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Driver Info */}
+                  <div className="bg-white rounded-lg p-4 border border-slate-200">
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <h4 className="font-semibold text-slate-800">{driver.name}</h4>
+                        <p className="text-sm text-slate-600">{driver.license}</p>
+                        <p className="text-sm text-slate-600">Safety Score: {driver.safetyScore}%</p>
+                      </div>
+                      <Badge variant={driver.safetyScore >= 80 ? "default" : "secondary"}>
+                        {driver.safetyScore >= 80 ? "Good" : "Needs Improvement"}
+                      </Badge>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
           {/* Behavior Analytics */}
           <div className="grid lg:grid-cols-2 gap-8 mb-12">
             <Card className="shadow-lg">
@@ -194,7 +341,7 @@ const Stats = () => {
           </div>
 
           {/* Monthly Trends */}
-          <Card className="shadow-lg">
+          <Card className="shadow-lg mb-8">
             <CardHeader>
               <CardTitle className="flex items-center">
                 <Calendar className="h-5 w-5 mr-2" />
@@ -223,7 +370,7 @@ const Stats = () => {
           </Card>
 
           {/* Heatmap Placeholder */}
-          <Card className="mt-8 shadow-lg">
+          <Card className="shadow-lg">
             <CardHeader>
               <CardTitle className="flex items-center">
                 <MapPin className="h-5 w-5 mr-2" />
