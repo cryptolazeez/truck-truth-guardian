@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Shield, BarChart3, TrendingUp, MapPin, AlertTriangle, Users, Calendar, Clock, User, Info } from 'lucide-react';
@@ -70,7 +71,7 @@ const Stats = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-white">
       {/* Navigation */}
       <nav className="bg-slate-800 text-white py-4 px-6 shadow-lg">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
@@ -88,26 +89,31 @@ const Stats = () => {
         </div>
       </nav>
 
-      {/* Header */}
-      <section className="bg-gradient-to-r from-green-600 to-green-700 text-white py-16 px-6">
-        <div className="max-w-4xl mx-auto text-center">
+      {/* Header with highway-inspired background */}
+      <section className="relative bg-gradient-to-r from-blue-600 to-blue-700 text-white py-16 px-6 overflow-hidden">
+        {/* Highway lines pattern */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-1/2 left-0 w-full h-1 bg-white transform -translate-y-1/2"></div>
+          <div className="absolute top-1/2 left-0 w-full h-0.5 bg-yellow-300 transform -translate-y-1/2"></div>
+        </div>
+        <div className="max-w-4xl mx-auto text-center relative z-10">
           <div className="flex items-center justify-center mb-4">
             <BarChart3 className="h-12 w-12 mr-3" />
             <h2 className="text-4xl font-bold">Safety Analytics</h2>
           </div>
-          <p className="text-xl text-green-100">
+          <p className="text-xl text-blue-100">
             Real-time insights into trucking safety trends and danger zones
           </p>
         </div>
       </section>
 
       {/* Overview Stats */}
-      <section className="py-12 px-6">
+      <section className="py-12 px-6 bg-gray-50">
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-4 gap-6 mb-12">
-            <Card className="text-center shadow-lg hover:shadow-xl transition-shadow duration-300">
+            <Card className="text-center shadow-lg hover:shadow-xl transition-shadow duration-300 bg-white border-0">
               <CardContent className="p-6">
-                <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="bg-blue-50 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                   <AlertTriangle className="h-8 w-8 text-blue-600" />
                 </div>
                 <div className="text-3xl font-bold text-slate-800 mb-2">
@@ -121,9 +127,9 @@ const Stats = () => {
               </CardContent>
             </Card>
 
-            <Card className="text-center shadow-lg hover:shadow-xl transition-shadow duration-300">
+            <Card className="text-center shadow-lg hover:shadow-xl transition-shadow duration-300 bg-white border-0">
               <CardContent className="p-6">
-                <div className="bg-red-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="bg-red-50 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Users className="h-8 w-8 text-red-600" />
                 </div>
                 <div className="text-3xl font-bold text-slate-800 mb-2">
@@ -137,9 +143,9 @@ const Stats = () => {
               </CardContent>
             </Card>
 
-            <Card className="text-center shadow-lg hover:shadow-xl transition-shadow duration-300">
+            <Card className="text-center shadow-lg hover:shadow-xl transition-shadow duration-300 bg-white border-0">
               <CardContent className="p-6">
-                <div className="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="bg-green-50 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                   <BarChart3 className="h-8 w-8 text-green-600" />
                 </div>
                 <div className="text-3xl font-bold text-slate-800 mb-2">
@@ -153,9 +159,9 @@ const Stats = () => {
               </CardContent>
             </Card>
 
-            <Card className="text-center shadow-lg hover:shadow-xl transition-shadow duration-300">
+            <Card className="text-center shadow-lg hover:shadow-xl transition-shadow duration-300 bg-white border-0">
               <CardContent className="p-6">
-                <div className="bg-yellow-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="bg-yellow-50 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Clock className="h-8 w-8 text-yellow-600" />
                 </div>
                 <div className="text-3xl font-bold text-slate-800 mb-2">24/7</div>
@@ -168,7 +174,7 @@ const Stats = () => {
           </div>
 
           {/* Driver Reviews Section */}
-          <div className="mb-12">
+          <div className="mb-12 bg-white rounded-lg p-8 shadow-lg">
             <h2 className="text-2xl font-bold text-slate-800 mb-6">Driver Performance Reviews</h2>
             <div className="grid lg:grid-cols-2 gap-6">
               {statsData.driverReviews.map((driver) => (
@@ -265,7 +271,7 @@ const Stats = () => {
                   </div>
 
                   {/* Driver Info */}
-                  <div className="bg-white rounded-lg p-4 border border-slate-200">
+                  <div className="bg-white rounded-lg p-4 border border-slate-200 shadow-sm">
                     <div className="flex items-center justify-between">
                       <div>
                         <h4 className="font-semibold text-slate-800">{driver.name}</h4>
@@ -284,7 +290,7 @@ const Stats = () => {
 
           {/* Behavior Analytics */}
           <div className="grid lg:grid-cols-2 gap-8 mb-12">
-            <Card className="shadow-lg">
+            <Card className="shadow-lg bg-white border-0">
               <CardHeader>
                 <CardTitle className="flex items-center">
                   <AlertTriangle className="h-5 w-5 mr-2" />
@@ -314,7 +320,7 @@ const Stats = () => {
               </CardContent>
             </Card>
 
-            <Card className="shadow-lg">
+            <Card className="shadow-lg bg-white border-0">
               <CardHeader>
                 <CardTitle className="flex items-center">
                   <MapPin className="h-5 w-5 mr-2" />
@@ -341,7 +347,7 @@ const Stats = () => {
           </div>
 
           {/* Monthly Trends */}
-          <Card className="shadow-lg mb-8">
+          <Card className="shadow-lg mb-8 bg-white border-0">
             <CardHeader>
               <CardTitle className="flex items-center">
                 <Calendar className="h-5 w-5 mr-2" />
@@ -352,7 +358,7 @@ const Stats = () => {
               <div className="grid grid-cols-6 gap-4">
                 {statsData.monthlyTrends.map((month, index) => (
                   <div key={month.month} className="text-center">
-                    <div className="bg-slate-200 rounded-lg p-4 mb-2">
+                    <div className="bg-slate-100 rounded-lg p-4 mb-2">
                       <div
                         className="bg-gradient-to-t from-blue-500 to-blue-600 rounded mx-auto transition-all duration-500"
                         style={{
@@ -369,8 +375,8 @@ const Stats = () => {
             </CardContent>
           </Card>
 
-          {/* Heatmap Placeholder */}
-          <Card className="shadow-lg">
+          {/* Heatmap Placeholder with truck imagery */}
+          <Card className="shadow-lg bg-white border-0">
             <CardHeader>
               <CardTitle className="flex items-center">
                 <MapPin className="h-5 w-5 mr-2" />
@@ -378,13 +384,22 @@ const Stats = () => {
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="bg-slate-100 rounded-lg p-12 text-center">
-                <MapPin className="h-16 w-16 text-slate-400 mx-auto mb-4" />
-                <h3 className="text-xl font-semibold text-slate-600 mb-2">Interactive Map Coming Soon</h3>
-                <p className="text-slate-500">
-                  Real-time heatmap showing incident density across major highways and cities.
-                  This will help identify the most dangerous routes and times for trucking.
-                </p>
+              <div className="bg-gradient-to-br from-blue-50 to-slate-50 rounded-lg p-12 text-center relative overflow-hidden">
+                {/* Subtle truck silhouettes in background */}
+                <div className="absolute inset-0 opacity-5">
+                  <div className="absolute top-4 left-4 text-6xl">🚛</div>
+                  <div className="absolute top-8 right-8 text-4xl">🚚</div>
+                  <div className="absolute bottom-4 left-1/3 text-5xl">🚛</div>
+                  <div className="absolute bottom-8 right-1/4 text-3xl">🚚</div>
+                </div>
+                <div className="relative z-10">
+                  <MapPin className="h-16 w-16 text-slate-400 mx-auto mb-4" />
+                  <h3 className="text-xl font-semibold text-slate-600 mb-2">Interactive Map Coming Soon</h3>
+                  <p className="text-slate-500">
+                    Real-time heatmap showing incident density across major highways and cities.
+                    This will help identify the most dangerous routes and times for trucking.
+                  </p>
+                </div>
               </div>
             </CardContent>
           </Card>
