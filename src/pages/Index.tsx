@@ -1,6 +1,7 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Shield, AlertTriangle, Search, BarChart3, Phone, MapPin, Clock, FileText } from 'lucide-react';
+import { Shield, AlertTriangle, Search, BarChart3, Phone, MapPin, Clock, FileText, Settings } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 
@@ -18,8 +19,11 @@ const Index = () => {
             <Link to="/" className="hover:text-blue-400 transition-colors">Home</Link>
             <Link to="/report" className="hover:text-blue-400 transition-colors">Report</Link>
             <Link to="/search" className="hover:text-blue-400 transition-colors">Search</Link>
-            <Link to="/stats" className="hover:text-blue-400 transition-colors">Stats</Link>
             <Link to="/contact" className="hover:text-blue-400 transition-colors">Contact</Link>
+            <Link to="/admin-login" className="hover:text-blue-400 transition-colors flex items-center">
+              <Settings className="h-4 w-4 mr-1" />
+              Admin
+            </Link>
           </div>
         </div>
       </nav>
@@ -159,7 +163,7 @@ const Index = () => {
             <div className="space-y-2">
               <Link to="/dashboard" className="block text-slate-400 hover:text-white transition-colors">Report Incident</Link>
               <Link to="/search" className="block text-slate-400 hover:text-white transition-colors">Search Records</Link>
-              <Link to="/stats" className="block text-slate-400 hover:text-white transition-colors">View Stats</Link>
+              <Link to="/admin-login" className="block text-slate-400 hover:text-white transition-colors">Admin Login</Link>
             </div>
           </div>
           <div>

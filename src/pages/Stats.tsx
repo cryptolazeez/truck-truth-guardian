@@ -1,12 +1,19 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Shield, BarChart3, TrendingUp, MapPin, AlertTriangle, Users, Calendar, Clock, User, Info } from 'lucide-react';
+import { Shield, BarChart3, TrendingUp, MapPin, AlertTriangle, Users, Calendar, Clock, User, Info, LogOut } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
+import { Button } from '@/components/ui/button';
+import { useAdmin } from '@/contexts/AdminContext';
 
 const Stats = () => {
+  const { logout } = useAdmin();
+
+  const handleLogout = () => {
+    logout();
+  };
+
   // Mock data for demonstration
   const statsData = {
     totalReports: 2847,
@@ -83,8 +90,17 @@ const Stats = () => {
             <Link to="/" className="hover:text-blue-400 transition-colors">Home</Link>
             <Link to="/report" className="hover:text-blue-400 transition-colors">Report</Link>
             <Link to="/search" className="hover:text-blue-400 transition-colors">Search</Link>
-            <Link to="/stats" className="text-blue-400">Stats</Link>
+            <Link to="/stats" className="text-blue-400">Admin Stats</Link>
             <Link to="/contact" className="hover:text-blue-400 transition-colors">Contact</Link>
+            <Button 
+              onClick={handleLogout}
+              variant="outline" 
+              size="sm"
+              className="text-white border-white hover:bg-white hover:text-slate-800"
+            >
+              <LogOut className="h-4 w-4 mr-2" />
+              Logout
+            </Button>
           </div>
         </div>
       </nav>
@@ -99,7 +115,7 @@ const Stats = () => {
         <div className="max-w-4xl mx-auto text-center relative z-10">
           <div className="flex items-center justify-center mb-4">
             <BarChart3 className="h-12 w-12 mr-3" />
-            <h2 className="text-4xl font-bold">Safety Analytics</h2>
+            <h2 className="text-4xl font-bold">Admin Dashboard - Safety Analytics</h2>
           </div>
           <p className="text-xl text-blue-100">
             Real-time insights into trucking safety trends and danger zones
