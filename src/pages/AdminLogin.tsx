@@ -30,7 +30,7 @@ const AdminLogin = () => {
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <Link to="/" className="flex items-center space-x-2">
             <Shield className="h-8 w-8 text-blue-400" />
-            <h1 className="text-2xl font-bold">Truck Truth Tracker</h1>
+            <h1 className="text-2xl font-bold">TruckWatch</h1>
           </Link>
           <div className="hidden md:flex items-center space-x-6">
             <Link to="/" className="hover:text-blue-400 transition-colors">Home</Link>
