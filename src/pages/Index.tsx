@@ -10,7 +10,8 @@ const Index = () => {
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div className="flex items-center space-x-2">
             <Shield className="h-8 w-8 text-blue-600" />
-            <h1 className="text-2xl font-bold text-slate-800">Driver Reputation Registry</h1>
+            <h1 className="font-bold text-slate-800 text-2xl">TruckWatch
+          </h1>
           </div>
           <div className="hidden md:flex items-center space-x-6">
             <Link to="/" className="hover:text-blue-600 transition-colors">Home</Link>
