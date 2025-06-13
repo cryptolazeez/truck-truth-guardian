@@ -51,7 +51,7 @@ const Index = () => {
                 </Button>
               </Link>
               <Link to="/search">
-                <Button variant="outline" className="border-white text-white hover:bg-white hover:text-blue-700 px-8 py-4 text-lg font-semibold">
+                <Button variant="outline" className="border-white px-8 py-4 text-lg font-semibold bg-teal-600 hover:bg-teal-500 text-slate-50">
                   <BarChart3 className="mr-2 h-5 w-5" />
                   View Reports
                 </Button>
