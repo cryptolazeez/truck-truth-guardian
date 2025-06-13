@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Shield, AlertTriangle, Camera, MapPin, Clock, Truck, FileText, User } from 'lucide-react';
@@ -9,9 +8,10 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { useToast } from '@/hooks/use-toast';
-
 const Report = () => {
-  const { toast } = useToast();
+  const {
+    toast
+  } = useToast();
   const [formData, setFormData] = useState({
     datetime: '',
     location: '',
@@ -22,13 +22,12 @@ const Report = () => {
     description: '',
     photo: null as File | null
   });
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log('Report submitted:', formData);
     toast({
       title: "Report Submitted Successfully",
-      description: "Thank you for helping make our roads safer. Your report has been recorded.",
+      description: "Thank you for helping make our roads safer. Your report has been recorded."
     });
     // Reset form
     setFormData({
@@ -42,18 +41,20 @@ const Report = () => {
       photo: null
     });
   };
-
   const handleInputChange = (field: string, value: string) => {
-    setFormData(prev => ({ ...prev, [field]: value }));
+    setFormData(prev => ({
+      ...prev,
+      [field]: value
+    }));
   };
-
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0] || null;
-    setFormData(prev => ({ ...prev, photo: file }));
+    setFormData(prev => ({
+      ...prev,
+      photo: file
+    }));
   };
-
-  return (
-    <div className="min-h-screen bg-gray-50">
+  return <div className="min-h-screen bg-gray-50">
       {/* Navigation */}
       <nav className="bg-slate-800 text-white py-4 px-6 shadow-lg">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
@@ -104,7 +105,7 @@ const Report = () => {
                     Please provide as much detail as possible. Fields marked with * are required.
                   </p>
                 </CardHeader>
-                <CardContent className="p-8">
+                <CardContent className="p-8 bg-gray-300">
                   <form onSubmit={handleSubmit} className="space-y-8">
                     {/* When & Where Section */}
                     <div className="space-y-6">
@@ -117,14 +118,7 @@ const Report = () => {
                             <Clock className="h-4 w-4 mr-2 text-slate-500" />
                             Date & Time *
                           </Label>
-                          <Input
-                            id="datetime"
-                            type="datetime-local"
-                            value={formData.datetime}
-                            onChange={(e) => handleInputChange('datetime', e.target.value)}
-                            required
-                            className="border-slate-300 focus:border-red-500 focus:ring-red-500"
-                          />
+                          <Input id="datetime" type="datetime-local" value={formData.datetime} onChange={e => handleInputChange('datetime', e.target.value)} required className="border-slate-300 focus:border-red-500 focus:ring-red-500" />
                         </div>
                         
                         <div className="space-y-3">
@@ -132,14 +126,7 @@ const Report = () => {
                             <MapPin className="h-4 w-4 mr-2 text-slate-500" />
                             Location *
                           </Label>
-                          <Input
-                            id="location"
-                            placeholder="Highway, city, mile marker, etc."
-                            value={formData.location}
-                            onChange={(e) => handleInputChange('location', e.target.value)}
-                            required
-                            className="border-slate-300 focus:border-red-500 focus:ring-red-500"
-                          />
+                          <Input id="location" placeholder="Highway, city, mile marker, etc." value={formData.location} onChange={e => handleInputChange('location', e.target.value)} required className="border-slate-300 focus:border-red-500 focus:ring-red-500" />
                         </div>
                       </div>
                     </div>
@@ -155,25 +142,12 @@ const Report = () => {
                             <Truck className="h-4 w-4 mr-2 text-slate-500" />
                             License Plate *
                           </Label>
-                          <Input
-                            id="licensePlate"
-                            placeholder="ABC-1234"
-                            value={formData.licensePlate}
-                            onChange={(e) => handleInputChange('licensePlate', e.target.value)}
-                            required
-                            className="border-slate-300 focus:border-red-500 focus:ring-red-500"
-                          />
+                          <Input id="licensePlate" placeholder="ABC-1234" value={formData.licensePlate} onChange={e => handleInputChange('licensePlate', e.target.value)} required className="border-slate-300 focus:border-red-500 focus:ring-red-500" />
                         </div>
                         
                         <div className="space-y-3">
                           <Label htmlFor="truckNumber" className="text-sm font-medium">Truck/Fleet Number</Label>
-                          <Input
-                            id="truckNumber"
-                            placeholder="Optional"
-                            value={formData.truckNumber}
-                            onChange={(e) => handleInputChange('truckNumber', e.target.value)}
-                            className="border-slate-300 focus:border-red-500 focus:ring-red-500"
-                          />
+                          <Input id="truckNumber" placeholder="Optional" value={formData.truckNumber} onChange={e => handleInputChange('truckNumber', e.target.value)} className="border-slate-300 focus:border-red-500 focus:ring-red-500" />
                         </div>
                         
                         <div className="space-y-3">
@@ -181,13 +155,7 @@ const Report = () => {
                             <User className="h-4 w-4 mr-2 text-slate-500" />
                             Company Name
                           </Label>
-                          <Input
-                            id="company"
-                            placeholder="If visible"
-                            value={formData.company}
-                            onChange={(e) => handleInputChange('company', e.target.value)}
-                            className="border-slate-300 focus:border-red-500 focus:ring-red-500"
-                          />
+                          <Input id="company" placeholder="If visible" value={formData.company} onChange={e => handleInputChange('company', e.target.value)} className="border-slate-300 focus:border-red-500 focus:ring-red-500" />
                         </div>
                       </div>
                     </div>
@@ -200,7 +168,7 @@ const Report = () => {
                       
                       <div className="space-y-3">
                         <Label htmlFor="behaviorType" className="text-sm font-medium">Type of Dangerous Behavior *</Label>
-                        <Select value={formData.behaviorType} onValueChange={(value) => handleInputChange('behaviorType', value)}>
+                        <Select value={formData.behaviorType} onValueChange={value => handleInputChange('behaviorType', value)}>
                           <SelectTrigger className="border-slate-300 focus:border-red-500 focus:ring-red-500">
                             <SelectValue placeholder="Select behavior type" />
                           </SelectTrigger>
@@ -223,15 +191,7 @@ const Report = () => {
                         <Label htmlFor="description" className="text-sm font-medium">
                           Detailed Description *
                         </Label>
-                        <Textarea
-                          id="description"
-                          placeholder="Please describe what happened in detail. Include any relevant circumstances, weather conditions, traffic, etc."
-                          value={formData.description}
-                          onChange={(e) => handleInputChange('description', e.target.value)}
-                          required
-                          rows={5}
-                          className="border-slate-300 focus:border-red-500 focus:ring-red-500"
-                        />
+                        <Textarea id="description" placeholder="Please describe what happened in detail. Include any relevant circumstances, weather conditions, traffic, etc." value={formData.description} onChange={e => handleInputChange('description', e.target.value)} required rows={5} className="border-slate-300 focus:border-red-500 focus:ring-red-500" />
                       </div>
 
                       <div className="space-y-3">
@@ -239,13 +199,7 @@ const Report = () => {
                           <Camera className="h-4 w-4 mr-2 text-slate-500" />
                           Photo Evidence (Optional)
                         </Label>
-                        <Input
-                          id="photo"
-                          type="file"
-                          accept="image/*"
-                          onChange={handleFileChange}
-                          className="border-slate-300 focus:border-red-500 focus:ring-red-500"
-                        />
+                        <Input id="photo" type="file" accept="image/*" onChange={handleFileChange} className="border-slate-300 focus:border-red-500 focus:ring-red-500" />
                         <p className="text-sm text-slate-500">
                           Upload a photo if you have visual evidence of the incident
                         </p>
@@ -254,10 +208,7 @@ const Report = () => {
 
                     {/* Submit Button */}
                     <div className="pt-6">
-                      <Button 
-                        type="submit" 
-                        className="w-full bg-red-600 hover:bg-red-700 text-white py-4 text-lg font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-200"
-                      >
+                      <Button type="submit" className="w-full bg-red-600 hover:bg-red-700 text-white py-4 text-lg font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-200">
                         <FileText className="mr-2 h-5 w-5" />
                         Submit Report
                       </Button>
@@ -316,8 +267,6 @@ const Report = () => {
           </div>
         </div>
       </section>
-    </div>
-  );
+    </div>;
 };
-
 export default Report;
