@@ -1,13 +1,10 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Shield, AlertTriangle, Search, BarChart3, Phone, MapPin, Clock, FileText, Settings, CheckCircle, Star, Users, Building, Truck, UserCheck, Lock, Award, TrendingUp, Database, Globe } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-
 const Index = () => {
-  return (
-    <div className="min-h-screen bg-background">
+  return <div className="min-h-screen bg-background">
       {/* Navigation */}
       <nav className="bg-white text-slate-800 py-4 px-6 shadow-sm border-b">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
@@ -29,64 +26,10 @@ const Index = () => {
       </nav>
 
       {/* Trusted by Industry Leaders */}
-      <section className="py-16 px-6 bg-gray-50">
-        <div className="max-w-7xl mx-auto text-center">
-          <h2 className="text-3xl font-bold text-slate-800 mb-4">Trusted by Industry Leaders</h2>
-          <p className="text-lg text-slate-600 mb-12 max-w-3xl mx-auto">
-            Our platform is designed with input from trucking industry experts and compliance professionals.
-          </p>
-          <div className="grid md:grid-cols-4 gap-8">
-            <Card className="border-0 shadow-sm">
-              <CardContent className="p-6 text-center">
-                <div className="text-4xl font-bold text-blue-600 mb-2">99.9%</div>
-                <div className="text-slate-600">Uptime Guarantee</div>
-              </CardContent>
-            </Card>
-            <Card className="border-0 shadow-sm">
-              <CardContent className="p-6 text-center">
-                <div className="text-4xl font-bold text-orange-500 mb-2">24/7</div>
-                <div className="text-slate-600">Support Available</div>
-              </CardContent>
-            </Card>
-            <Card className="border-0 shadow-sm">
-              <CardContent className="p-6 text-center">
-                <div className="text-4xl font-bold text-green-600 mb-2">&lt;2sec</div>
-                <div className="text-slate-600">Average Response</div>
-              </CardContent>
-            </Card>
-            <Card className="border-0 shadow-sm">
-              <CardContent className="p-6 text-center">
-                <div className="text-4xl font-bold text-purple-600 mb-2">ISO</div>
-                <div className="text-slate-600">27001 Certified</div>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
+      
 
       {/* Security Certifications */}
-      <section className="py-16 px-6 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <h3 className="text-2xl font-bold text-center mb-12 text-slate-800">Security Certifications & Audits</h3>
-          <div className="grid md:grid-cols-6 gap-6 text-center">
-            {[
-              { icon: Shield, label: 'SOC 2 Type II' },
-              { icon: Lock, label: 'ISO 27001' },
-              { icon: Award, label: 'FCRA Compliant' },
-              { icon: CheckCircle, label: 'DOT Approved' },
-              { icon: Globe, label: 'AWS Partner' },
-              { icon: Database, label: 'GDPR Ready' }
-            ].map((cert, index) => (
-              <div key={index} className="flex flex-col items-center p-4">
-                <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mb-3">
-                  <cert.icon className="h-8 w-8 text-slate-400" />
-                </div>
-                <span className="text-sm text-slate-600">{cert.label}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      
 
       {/* Hero Section */}
       <section className="bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800 text-white py-20 px-6">
@@ -834,8 +777,6 @@ const Index = () => {
           <p>&copy; 2024 Driver Reputation Registry. All rights reserved.</p>
         </div>
       </footer>
-    </div>
-  );
+    </div>;
 };
-
 export default Index;
