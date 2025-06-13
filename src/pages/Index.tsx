@@ -708,7 +708,7 @@ const Index = () => {
       </section>
 
       {/* Call to Action */}
-      <section className="py-16 px-6 bg-gradient-to-r from-blue-600 to-blue-700 text-white">
+      <section className="py-16 px-6 bg-gradient-to-r from-blue-600 to-blue-700 text-white bg-[#c5e5f0]">
         <div className="max-w-4xl mx-auto text-center">
           <h3 className="text-3xl font-bold mb-4">
             Transform Your Hiring Process Today
@@ -724,7 +724,7 @@ const Index = () => {
               </Button>
             </Link>
             <Link to="/search">
-              <Button variant="outline" className="border-white text-white hover:bg-white hover:text-blue-700 px-8 py-4 text-lg font-semibold">
+              <Button variant="outline" className="border-white text-white hover:text-blue-700 px-8 py-4 text-lg font-semibold bg-green-500 hover:bg-green-400">
                 Search Drivers
               </Button>
             </Link>
