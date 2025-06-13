@@ -118,7 +118,7 @@ const Report = () => {
                             <Clock className="h-4 w-4 mr-2 text-slate-500" />
                             Date & Time *
                           </Label>
-                          <Input id="datetime" type="datetime-local" value={formData.datetime} onChange={e => handleInputChange('datetime', e.target.value)} required className="border-slate-300 focus:border-red-500 focus:ring-red-500" />
+                          <Input id="datetime" type="datetime-local" value={formData.datetime} onChange={e => handleInputChange('datetime', e.target.value)} required className="border-slate-300 focus:border-red-500 focus:ring-red-500 bg-gray-50" />
                         </div>
                         
                         <div className="space-y-3">
