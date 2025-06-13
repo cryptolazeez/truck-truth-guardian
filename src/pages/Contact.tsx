@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Shield, Phone, Mail, MapPin, MessageSquare, Clock, AlertTriangle, Users } from 'lucide-react';
@@ -9,9 +8,10 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { useToast } from '@/hooks/use-toast';
-
 const Contact = () => {
-  const { toast } = useToast();
+  const {
+    toast
+  } = useToast();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -19,13 +19,12 @@ const Contact = () => {
     message: '',
     contactReason: ''
   });
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log('Contact form submitted:', formData);
     toast({
       title: "Message Sent Successfully",
-      description: "Thank you for contacting us. We'll get back to you within 24 hours.",
+      description: "Thank you for contacting us. We'll get back to you within 24 hours."
     });
     // Reset form
     setFormData({
@@ -36,13 +35,13 @@ const Contact = () => {
       contactReason: ''
     });
   };
-
   const handleInputChange = (field: string, value: string) => {
-    setFormData(prev => ({ ...prev, [field]: value }));
+    setFormData(prev => ({
+      ...prev,
+      [field]: value
+    }));
   };
-
-  return (
-    <div className="min-h-screen bg-background">
+  return <div className="min-h-screen bg-background">
       {/* Navigation */}
       <nav className="bg-slate-800 text-white py-4 px-6 shadow-lg">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
@@ -74,7 +73,7 @@ const Contact = () => {
       </section>
 
       {/* Contact Section */}
-      <section className="py-12 px-6">
+      <section className="py-12 px-6 bg-slate-50">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-3 gap-8">
             {/* Contact Information */}
@@ -182,30 +181,17 @@ const Contact = () => {
                     <div className="grid md:grid-cols-2 gap-4">
                       <div className="space-y-2">
                         <Label htmlFor="name">Full Name *</Label>
-                        <Input
-                          id="name"
-                          placeholder="Your full name"
-                          value={formData.name}
-                          onChange={(e) => handleInputChange('name', e.target.value)}
-                          required
-                        />
+                        <Input id="name" placeholder="Your full name" value={formData.name} onChange={e => handleInputChange('name', e.target.value)} required />
                       </div>
                       <div className="space-y-2">
                         <Label htmlFor="email">Email Address *</Label>
-                        <Input
-                          id="email"
-                          type="email"
-                          placeholder="your.email@example.com"
-                          value={formData.email}
-                          onChange={(e) => handleInputChange('email', e.target.value)}
-                          required
-                        />
+                        <Input id="email" type="email" placeholder="your.email@example.com" value={formData.email} onChange={e => handleInputChange('email', e.target.value)} required />
                       </div>
                     </div>
 
                     <div className="space-y-2">
                       <Label htmlFor="contactReason">Reason for Contact</Label>
-                      <Select value={formData.contactReason} onValueChange={(value) => handleInputChange('contactReason', value)}>
+                      <Select value={formData.contactReason} onValueChange={value => handleInputChange('contactReason', value)}>
                         <SelectTrigger>
                           <SelectValue placeholder="Select a reason" />
                         </SelectTrigger>
@@ -224,31 +210,15 @@ const Contact = () => {
 
                     <div className="space-y-2">
                       <Label htmlFor="subject">Subject *</Label>
-                      <Input
-                        id="subject"
-                        placeholder="Brief description of your inquiry"
-                        value={formData.subject}
-                        onChange={(e) => handleInputChange('subject', e.target.value)}
-                        required
-                      />
+                      <Input id="subject" placeholder="Brief description of your inquiry" value={formData.subject} onChange={e => handleInputChange('subject', e.target.value)} required />
                     </div>
 
                     <div className="space-y-2">
                       <Label htmlFor="message">Message *</Label>
-                      <Textarea
-                        id="message"
-                        placeholder="Please provide details about your inquiry..."
-                        value={formData.message}
-                        onChange={(e) => handleInputChange('message', e.target.value)}
-                        required
-                        rows={6}
-                      />
+                      <Textarea id="message" placeholder="Please provide details about your inquiry..." value={formData.message} onChange={e => handleInputChange('message', e.target.value)} required rows={6} />
                     </div>
 
-                    <Button 
-                      type="submit" 
-                      className="w-full bg-purple-600 hover:bg-purple-700 text-white py-3 text-lg font-semibold"
-                    >
+                    <Button type="submit" className="w-full bg-purple-600 hover:bg-purple-700 text-white py-3 text-lg font-semibold">
                       <MessageSquare className="mr-2 h-5 w-5" />
                       Send Message
                     </Button>
@@ -311,8 +281,6 @@ const Contact = () => {
           </Card>
         </div>
       </section>
-    </div>
-  );
+    </div>;
 };
-
 export default Contact;
