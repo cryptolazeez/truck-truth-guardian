@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Shield, Search as SearchIcon, AlertTriangle, CheckCircle, XCircle, Star, Calendar, MapPin } from 'lucide-react';
@@ -8,7 +7,6 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-
 const Search = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState<any>(null);
@@ -23,68 +21,61 @@ const Search = () => {
     totalReports: 8,
     lastIncident: '2024-01-15',
     yearsActive: 5,
-    recentReports: [
-      {
-        id: 1,
-        date: '2024-01-15',
-        location: 'I-95 North, Mile 247',
-        behavior: 'Aggressive Driving',
-        severity: 'High'
-      },
-      {
-        id: 2,
-        date: '2024-01-10',
-        location: 'Highway 101, San Francisco',
-        behavior: 'Speeding',
-        severity: 'Medium'
-      },
-      {
-        id: 3,
-        date: '2023-12-28',
-        location: 'I-10 West, Phoenix',
-        behavior: 'Unsafe Passing',
-        severity: 'Medium'
-      }
-    ]
+    recentReports: [{
+      id: 1,
+      date: '2024-01-15',
+      location: 'I-95 North, Mile 247',
+      behavior: 'Aggressive Driving',
+      severity: 'High'
+    }, {
+      id: 2,
+      date: '2024-01-10',
+      location: 'Highway 101, San Francisco',
+      behavior: 'Speeding',
+      severity: 'Medium'
+    }, {
+      id: 3,
+      date: '2023-12-28',
+      location: 'I-10 West, Phoenix',
+      behavior: 'Unsafe Passing',
+      severity: 'Medium'
+    }]
   };
-
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
     if (!searchQuery.trim()) return;
-    
     setIsSearching(true);
     console.log('Searching for:', searchQuery);
-    
+
     // Simulate API call
     setTimeout(() => {
       setSearchResults(mockDriverData);
       setIsSearching(false);
     }, 1500);
   };
-
   const getSafetyRatingColor = (rating: number) => {
     if (rating >= 4) return 'text-green-600';
     if (rating >= 3) return 'text-yellow-600';
     return 'text-red-600';
   };
-
   const getSafetyRatingText = (rating: number) => {
     if (rating >= 4) return 'Good';
     if (rating >= 3) return 'Fair';
     return 'Poor';
   };
-
   const getSeverityColor = (severity: string) => {
     switch (severity) {
-      case 'High': return 'bg-red-100 text-red-800';
-      case 'Medium': return 'bg-yellow-100 text-yellow-800';
-      case 'Low': return 'bg-green-100 text-green-800';
-      default: return 'bg-gray-100 text-gray-800';
+      case 'High':
+        return 'bg-red-100 text-red-800';
+      case 'Medium':
+        return 'bg-yellow-100 text-yellow-800';
+      case 'Low':
+        return 'bg-green-100 text-green-800';
+      default:
+        return 'bg-gray-100 text-gray-800';
     }
   };
-
-  return (
-    <div className="min-h-screen bg-background">
+  return <div className="min-h-screen bg-background">
       {/* Navigation */}
       <nav className="bg-slate-800 text-white py-4 px-6 shadow-lg">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
@@ -116,40 +107,26 @@ const Search = () => {
       </section>
 
       {/* Search Section */}
-      <section className="py-12 px-6">
+      <section className="py-12 px-6 bg-cyan-50">
         <div className="max-w-4xl mx-auto">
           <Card className="shadow-lg">
-            <CardHeader>
+            <CardHeader className="bg-yellow-200">
               <CardTitle className="text-2xl text-slate-800">Driver Safety Lookup</CardTitle>
               <p className="text-slate-600">
                 Enter a license plate number or driver ID to view safety records and ratings
               </p>
             </CardHeader>
-            <CardContent>
+            <CardContent className="bg-yellow-200">
               <form onSubmit={handleSearch} className="space-y-4">
                 <div className="space-y-2">
                   <Label htmlFor="search">License Plate or Driver ID</Label>
                   <div className="flex gap-4">
-                    <Input
-                      id="search"
-                      placeholder="e.g., ABC-1234 or D12345678"
-                      value={searchQuery}
-                      onChange={(e) => setSearchQuery(e.target.value)}
-                      className="flex-1"
-                    />
-                    <Button 
-                      type="submit" 
-                      disabled={isSearching}
-                      className="bg-blue-600 hover:bg-blue-700 px-6"
-                    >
-                      {isSearching ? (
-                        <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
-                      ) : (
-                        <>
+                    <Input id="search" placeholder="e.g., ABC-1234 or D12345678" value={searchQuery} onChange={e => setSearchQuery(e.target.value)} className="flex-1 bg-slate-950" />
+                    <Button type="submit" disabled={isSearching} className="bg-blue-600 hover:bg-blue-700 px-6 text-neutral-50">
+                      {isSearching ? <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div> : <>
                           <SearchIcon className="mr-2 h-4 w-4" />
                           Search
-                        </>
-                      )}
+                        </>}
                     </Button>
                   </div>
                 </div>
@@ -158,8 +135,7 @@ const Search = () => {
           </Card>
 
           {/* Search Results */}
-          {searchResults && (
-            <div className="mt-8 space-y-6 animate-fade-in">
+          {searchResults && <div className="mt-8 space-y-6 animate-fade-in">
               {/* Driver Overview */}
               <Card className="shadow-lg">
                 <CardHeader>
@@ -167,16 +143,7 @@ const Search = () => {
                     <CardTitle className="text-2xl">Driver Safety Profile</CardTitle>
                     <div className="flex items-center space-x-2">
                       <div className="flex items-center">
-                        {[...Array(5)].map((_, i) => (
-                          <Star
-                            key={i}
-                            className={`h-5 w-5 ${
-                              i < Math.round(searchResults.safetyRating)
-                                ? 'text-yellow-400 fill-current'
-                                : 'text-gray-300'
-                            }`}
-                          />
-                        ))}
+                        {[...Array(5)].map((_, i) => <Star key={i} className={`h-5 w-5 ${i < Math.round(searchResults.safetyRating) ? 'text-yellow-400 fill-current' : 'text-gray-300'}`} />)}
                       </div>
                       <span className={`text-2xl font-bold ${getSafetyRatingColor(searchResults.safetyRating)}`}>
                         {searchResults.safetyRating}/5.0
@@ -224,13 +191,7 @@ const Search = () => {
                   
                   <div className="mt-6 p-4 bg-slate-50 rounded-lg">
                     <div className="flex items-center space-x-2">
-                      {searchResults.safetyRating >= 4 ? (
-                        <CheckCircle className="h-5 w-5 text-green-600" />
-                      ) : searchResults.safetyRating >= 3 ? (
-                        <AlertTriangle className="h-5 w-5 text-yellow-600" />
-                      ) : (
-                        <XCircle className="h-5 w-5 text-red-600" />
-                      )}
+                      {searchResults.safetyRating >= 4 ? <CheckCircle className="h-5 w-5 text-green-600" /> : searchResults.safetyRating >= 3 ? <AlertTriangle className="h-5 w-5 text-yellow-600" /> : <XCircle className="h-5 w-5 text-red-600" />}
                       <span className="font-medium">
                         Safety Assessment: {getSafetyRatingText(searchResults.safetyRating)} Driver
                       </span>
@@ -251,8 +212,7 @@ const Search = () => {
                       <TabsTrigger value="history">Full History</TabsTrigger>
                     </TabsList>
                     <TabsContent value="recent" className="space-y-4">
-                      {searchResults.recentReports.map((report: any) => (
-                        <Card key={report.id} className="border-l-4 border-l-red-500">
+                      {searchResults.recentReports.map((report: any) => <Card key={report.id} className="border-l-4 border-l-red-500">
                           <CardContent className="p-4">
                             <div className="flex items-center justify-between mb-2">
                               <div className="flex items-center space-x-2">
@@ -271,8 +231,7 @@ const Search = () => {
                               <span>{report.location}</span>
                             </div>
                           </CardContent>
-                        </Card>
-                      ))}
+                        </Card>)}
                     </TabsContent>
                     <TabsContent value="history">
                       <p className="text-slate-600 text-center py-8">
@@ -282,22 +241,21 @@ const Search = () => {
                   </Tabs>
                 </CardContent>
               </Card>
-            </div>
-          )}
+            </div>}
 
           {/* Info Card */}
           <Card className="mt-8 bg-blue-50 border-blue-200">
-            <CardContent className="p-6">
-              <div className="flex items-start space-x-3">
+            <CardContent className="p-6 bg-green-400">
+              <div className="flex items-start space-x-3 bg-green-400">
                 <SearchIcon className="h-6 w-6 text-blue-600 mt-1" />
                 <div>
-                  <h3 className="font-semibold text-blue-800 mb-2">How Safety Ratings Work</h3>
-                  <p className="text-blue-700 mb-2">
+                  <h3 className="font-semibold mb-2 text-slate-100">How Safety Ratings Work</h3>
+                  <p className="mb-2 text-slate-100">
                     Our safety ratings are calculated based on the number and severity of reported incidents, 
                     years of driving experience, and improvement trends over time.
                   </p>
                   <ul className="text-blue-700 text-sm space-y-1">
-                    <li>• 4.0-5.0: Excellent safety record</li>
+                    <li className="bg-[#afebff]/[0.31]">• 4.0-5.0: Excellent safety record</li>
                     <li>• 3.0-3.9: Fair safety record, some concerns</li>
                     <li>• Below 3.0: Poor safety record, multiple incidents</li>
                   </ul>
@@ -307,8 +265,6 @@ const Search = () => {
           </Card>
         </div>
       </section>
-    </div>
-  );
+    </div>;
 };
-
 export default Search;
