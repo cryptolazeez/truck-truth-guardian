@@ -724,7 +724,7 @@ const Index = () => {
               </Button>
             </Link>
             <Link to="/search">
-              <Button variant="outline" className="border-white text-white hover:text-blue-700 px-8 py-4 text-lg font-semibold bg-green-500 hover:bg-green-400">
+              <Button variant="outline" className="border-white px-8 py-4 text-lg text-zinc-100 bg-lime-600 hover:bg-lime-500 font-bold">
                 Search Drivers
               </Button>
             </Link>
