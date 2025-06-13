@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Shield, AlertTriangle, Search, BarChart3, Phone, MapPin, Clock, FileText } from 'lucide-react';
@@ -36,7 +35,7 @@ const Index = () => {
             and check safety records to protect our communities.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-scale-in">
-            <Link to="/report">
+            <Link to="/dashboard">
               <Button className="bg-red-600 hover:bg-red-700 text-white px-8 py-4 text-lg font-semibold rounded-lg shadow-lg transform hover:scale-105 transition-all duration-200">
                 <AlertTriangle className="mr-2 h-5 w-5" />
                 Report Now
@@ -135,7 +134,7 @@ const Index = () => {
             Every report makes a difference. Help us create accountability 
             in the trucking industry and protect everyone on the road.
           </p>
-          <Link to="/report">
+          <Link to="/dashboard">
             <Button className="bg-white text-blue-600 hover:bg-slate-100 px-8 py-4 text-lg font-semibold rounded-lg shadow-lg transform hover:scale-105 transition-all duration-200">
               Get Started Today
             </Button>
@@ -158,7 +157,7 @@ const Index = () => {
           <div>
             <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
             <div className="space-y-2">
-              <Link to="/report" className="block text-slate-400 hover:text-white transition-colors">Report Incident</Link>
+              <Link to="/dashboard" className="block text-slate-400 hover:text-white transition-colors">Report Incident</Link>
               <Link to="/search" className="block text-slate-400 hover:text-white transition-colors">Search Records</Link>
               <Link to="/stats" className="block text-slate-400 hover:text-white transition-colors">View Stats</Link>
             </div>
