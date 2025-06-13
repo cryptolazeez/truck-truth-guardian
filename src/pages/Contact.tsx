@@ -79,13 +79,13 @@ const Contact = () => {
             {/* Contact Information */}
             <div className="lg:col-span-1 space-y-6">
               <Card className="shadow-lg">
-                <CardHeader>
-                  <CardTitle className="flex items-center">
+                <CardHeader className="bg-rose-950">
+                  <CardTitle className="flex items-center text-slate-50">
                     <Phone className="h-5 w-5 mr-2" />
                     Emergency Hotline
                   </CardTitle>
                 </CardHeader>
-                <CardContent>
+                <CardContent className="bg-slate-50">
                   <div className="space-y-3">
                     <div className="flex items-center space-x-3">
                       <Phone className="h-5 w-5 text-red-600" />
@@ -106,13 +106,13 @@ const Contact = () => {
               </Card>
 
               <Card className="shadow-lg">
-                <CardHeader>
-                  <CardTitle className="flex items-center">
+                <CardHeader className="bg-emerald-800">
+                  <CardTitle className="flex items-center text-slate-50">
                     <Users className="h-5 w-5 mr-2" />
                     General Support
                   </CardTitle>
                 </CardHeader>
-                <CardContent>
+                <CardContent className="bg-emerald-50">
                   <div className="space-y-3">
                     <div className="flex items-center space-x-3">
                       <Phone className="h-5 w-5 text-blue-600" />
@@ -140,13 +140,13 @@ const Contact = () => {
               </Card>
 
               <Card className="shadow-lg">
-                <CardHeader>
-                  <CardTitle className="flex items-center">
+                <CardHeader className="bg-blue-600">
+                  <CardTitle className="flex items-center text-slate-50">
                     <MapPin className="h-5 w-5 mr-2" />
                     Business Partnerships
                   </CardTitle>
                 </CardHeader>
-                <CardContent>
+                <CardContent className="bg-sky-50">
                   <div className="space-y-3">
                     <div className="flex items-center space-x-3">
                       <Mail className="h-5 w-5 text-purple-600" />
@@ -169,23 +169,23 @@ const Contact = () => {
 
             {/* Contact Form */}
             <div className="lg:col-span-2">
-              <Card className="shadow-lg">
+              <Card className="shadow-lg bg-yellow-200">
                 <CardHeader>
                   <CardTitle className="text-2xl text-slate-800">Send Us a Message</CardTitle>
                   <p className="text-slate-600">
                     Have a question, suggestion, or need support? We're here to help.
                   </p>
                 </CardHeader>
-                <CardContent>
+                <CardContent className="bg-stone-100">
                   <form onSubmit={handleSubmit} className="space-y-6">
                     <div className="grid md:grid-cols-2 gap-4">
                       <div className="space-y-2">
                         <Label htmlFor="name">Full Name *</Label>
-                        <Input id="name" placeholder="Your full name" value={formData.name} onChange={e => handleInputChange('name', e.target.value)} required />
+                        <Input id="name" placeholder="Your full name" value={formData.name} onChange={e => handleInputChange('name', e.target.value)} required className="bg-slate-50" />
                       </div>
                       <div className="space-y-2">
                         <Label htmlFor="email">Email Address *</Label>
-                        <Input id="email" type="email" placeholder="your.email@example.com" value={formData.email} onChange={e => handleInputChange('email', e.target.value)} required />
+                        <Input id="email" type="email" placeholder="your.email@example.com" value={formData.email} onChange={e => handleInputChange('email', e.target.value)} required className="bg-slate-50" />
                       </div>
                     </div>
 
@@ -210,12 +210,12 @@ const Contact = () => {
 
                     <div className="space-y-2">
                       <Label htmlFor="subject">Subject *</Label>
-                      <Input id="subject" placeholder="Brief description of your inquiry" value={formData.subject} onChange={e => handleInputChange('subject', e.target.value)} required />
+                      <Input id="subject" placeholder="Brief description of your inquiry" value={formData.subject} onChange={e => handleInputChange('subject', e.target.value)} required className="bg-slate-50" />
                     </div>
 
                     <div className="space-y-2">
                       <Label htmlFor="message">Message *</Label>
-                      <Textarea id="message" placeholder="Please provide details about your inquiry..." value={formData.message} onChange={e => handleInputChange('message', e.target.value)} required rows={6} />
+                      <Textarea id="message" placeholder="Please provide details about your inquiry..." value={formData.message} onChange={e => handleInputChange('message', e.target.value)} required rows={6} className="bg-slate-50" />
                     </div>
 
                     <Button type="submit" className="w-full bg-purple-600 hover:bg-purple-700 text-white py-3 text-lg font-semibold">
@@ -250,28 +250,28 @@ const Contact = () => {
 
           {/* FAQ Section */}
           <Card className="mt-8 shadow-lg">
-            <CardHeader>
-              <CardTitle>Frequently Asked Questions</CardTitle>
+            <CardHeader className="bg-indigo-950">
+              <CardTitle className="text-slate-50">Frequently Asked Questions</CardTitle>
             </CardHeader>
-            <CardContent>
+            <CardContent className="bg-blue-200">
               <div className="space-y-4">
                 <div>
-                  <h4 className="font-semibold mb-2">How quickly are reports processed?</h4>
-                  <p className="text-slate-600">
+                  <h4 className="font-semibold mb-2 text-zinc-950">How quickly are reports processed?</h4>
+                  <p className="text-lime-700">
                     Emergency reports are processed immediately. Standard reports are reviewed within 2-4 hours 
                     during business hours.
                   </p>
                 </div>
                 <div>
-                  <h4 className="font-semibold mb-2">Can trucking companies access driver data?</h4>
-                  <p className="text-slate-600">
+                  <h4 className="font-semibold mb-2 text-slate-950">Can trucking companies access driver data?</h4>
+                  <p className="text-green-700">
                     Yes, we offer fleet management partnerships that allow companies to monitor their drivers' 
                     safety records to improve training and accountability.
                   </p>
                 </div>
                 <div>
-                  <h4 className="font-semibold mb-2">Is my personal information protected?</h4>
-                  <p className="text-slate-600">
+                  <h4 className="font-semibold mb-2 text-slate-950">Is my personal information protected?</h4>
+                  <p className="text-lime-800">
                     Absolutely. We use enterprise-grade security and only share necessary information with 
                     relevant authorities when required by law.
                   </p>
