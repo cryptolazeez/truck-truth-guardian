@@ -57,94 +57,93 @@ const AdminLogin = () => {
       {/* Admin Login Form */}
       <div className="flex items-center justify-center min-h-[calc(100vh-80px)] py-12 px-6">
         <div className="w-full max-w-md">
-          <Card className="shadow-2xl border-0 bg-white/95 backdrop-blur-sm">
-            <CardHeader className="text-center space-y-4 pb-8">
-              <div className="bg-gradient-to-br from-blue-500 to-blue-600 w-20 h-20 rounded-2xl flex items-center justify-center mx-auto shadow-lg">
+          {/* Form container matching the CSS design */}
+          <div className="flex flex-col gap-2.5 bg-white p-8 w-full max-w-[450px] rounded-[20px] shadow-2xl" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif' }}>
+            
+            {/* Header */}
+            <div className="text-center mb-6">
+              <div className="bg-gradient-to-br from-blue-500 to-blue-600 w-20 h-20 rounded-2xl flex items-center justify-center mx-auto shadow-lg mb-4">
                 <Lock className="h-10 w-10 text-white" />
               </div>
-              <div className="space-y-2">
-                <CardTitle className="text-3xl font-bold text-slate-800">Admin Access</CardTitle>
-                <p className="text-slate-600 font-medium">Secure administrative dashboard</p>
-              </div>
-            </CardHeader>
+              <h2 className="text-2xl font-bold text-black mb-2">Admin Access</h2>
+              <p className="text-gray-600 text-sm">Secure administrative dashboard</p>
+            </div>
             
-            <CardContent className="space-y-6">
-              <form onSubmit={handleSubmit} className="space-y-5">
-                {error && (
-                  <div className="bg-red-50 border border-red-200 rounded-xl p-4 flex items-center space-x-3 animate-in slide-in-from-top-2">
-                    <AlertCircle className="h-5 w-5 text-red-600 flex-shrink-0" />
-                    <span className="text-red-700 font-medium">{error}</span>
-                  </div>
-                )}
-                
-                <div className="space-y-3">
-                  <Label htmlFor="username" className="text-sm font-semibold text-slate-700">
-                    Username
-                  </Label>
-                  <Input 
-                    id="username" 
+            <form onSubmit={handleSubmit} className="flex flex-col gap-2.5">
+              {error && (
+                <div className="bg-red-50 border border-red-200 rounded-xl p-4 flex items-center space-x-3 mb-4">
+                  <AlertCircle className="h-5 w-5 text-red-600 flex-shrink-0" />
+                  <span className="text-red-700 font-medium text-sm">{error}</span>
+                </div>
+              )}
+              
+              {/* Username Field */}
+              <div className="flex flex-col">
+                <label className="text-[#151717] font-semibold mb-2">Username</label>
+                <div className="border-[1.5px] border-[#ecedec] rounded-[10px] h-[50px] flex items-center pl-2.5 transition-all duration-200 ease-in-out focus-within:border-[#2d79f3]">
+                  <Lock className="h-5 w-5 text-gray-400" />
+                  <input 
                     type="text" 
                     value={username} 
                     onChange={e => setUsername(e.target.value)} 
-                    placeholder="Enter admin username" 
-                    className="h-12 border-slate-300 focus:border-blue-500 focus:ring-blue-500 rounded-lg"
+                    placeholder="Enter admin username"
+                    className="ml-2.5 rounded-[10px] border-none w-[85%] h-full outline-none"
+                    style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif' }}
                     required 
                   />
                 </div>
+              </div>
 
-                <div className="space-y-3">
-                  <Label htmlFor="password" className="text-sm font-semibold text-slate-700">
-                    Password
-                  </Label>
-                  <div className="relative">
-                    <Input 
-                      id="password" 
-                      type={showPassword ? "text" : "password"}
-                      value={password} 
-                      onChange={e => setPassword(e.target.value)} 
-                      placeholder="Enter admin password" 
-                      className="h-12 pr-12 border-slate-300 focus:border-blue-500 focus:ring-blue-500 rounded-lg"
-                      required 
-                    />
-                    <button
-                      type="button"
-                      onClick={() => setShowPassword(!showPassword)}
-                      className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-500 hover:text-slate-700 transition-colors"
-                    >
-                      {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
-                    </button>
-                  </div>
-                </div>
-
-                <Button 
-                  type="submit" 
-                  disabled={isLoading}
-                  className="w-full h-12 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold rounded-lg shadow-lg transition-all duration-200 transform hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed"
-                >
-                  {isLoading ? (
-                    <div className="flex items-center space-x-2">
-                      <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                      <span>Signing In...</span>
-                    </div>
-                  ) : (
-                    <div className="flex items-center space-x-2">
-                      <Lock className="h-4 w-4" />
-                      <span>Sign In as Admin</span>
-                    </div>
-                  )}
-                </Button>
-              </form>
-
-              <div className="pt-4 border-t border-slate-200">
-                <div className="bg-blue-50 rounded-lg p-4 text-center">
-                  <p className="text-sm font-medium text-blue-800 mb-1">Demo Credentials</p>
-                  <p className="text-xs text-blue-600">
-                    <span className="font-mono bg-white px-2 py-1 rounded">admin</span> / <span className="font-mono bg-white px-2 py-1 rounded">admin123</span>
-                  </p>
+              {/* Password Field */}
+              <div className="flex flex-col">
+                <label className="text-[#151717] font-semibold mb-2">Password</label>
+                <div className="border-[1.5px] border-[#ecedec] rounded-[10px] h-[50px] flex items-center pl-2.5 transition-all duration-200 ease-in-out focus-within:border-[#2d79f3]">
+                  <Lock className="h-5 w-5 text-gray-400" />
+                  <input 
+                    type={showPassword ? "text" : "password"}
+                    value={password} 
+                    onChange={e => setPassword(e.target.value)} 
+                    placeholder="Enter admin password"
+                    className="ml-2.5 rounded-[10px] border-none w-[75%] h-full outline-none"
+                    style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "Segeo UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif' }}
+                    required 
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword(!showPassword)}
+                    className="text-gray-400 hover:text-gray-600 transition-colors p-1"
+                  >
+                    {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
+                  </button>
                 </div>
               </div>
-            </CardContent>
-          </Card>
+
+              {/* Submit Button */}
+              <button 
+                type="submit" 
+                disabled={isLoading}
+                className="mt-5 mb-2.5 bg-[#151717] border-none text-white text-[15px] font-medium rounded-[10px] h-[50px] w-full cursor-pointer transition-colors hover:bg-[#252727] disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
+              >
+                {isLoading ? (
+                  <div className="flex items-center space-x-2">
+                    <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                    <span>Signing In...</span>
+                  </div>
+                ) : (
+                  <span>Sign In as Admin</span>
+                )}
+              </button>
+            </form>
+
+            {/* Demo Credentials */}
+            <div className="mt-2.5 pt-4 border-t border-gray-200">
+              <p className="text-center text-black text-sm mb-1">Demo Credentials</p>
+              <p className="text-center text-sm text-gray-600">
+                Username: <span className="font-mono bg-gray-100 px-2 py-1 rounded text-[#2d79f3] font-medium">admin</span> / 
+                Password: <span className="font-mono bg-gray-100 px-2 py-1 rounded text-[#2d79f3] font-medium">admin123</span>
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
