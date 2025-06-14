@@ -3,13 +3,15 @@ import { Link } from 'react-router-dom';
 import { Shield, AlertTriangle, Search, BarChart3, Phone, MapPin, Clock, FileText, Settings, CheckCircle, Star, Users, Building, Truck, UserCheck, Lock, Award, TrendingUp, Database, Globe } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
+import TruckWatchLogo from '@/components/TruckWatchLogo';
+
 const Index = () => {
   return <div className="min-h-screen bg-background">
       {/* Navigation */}
       <nav className="bg-white text-slate-800 py-4 px-6 shadow-sm border-b">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div className="flex items-center space-x-2">
-            <Shield className="h-8 w-8 text-blue-600" />
+            <TruckWatchLogo className="text-blue-600" />
             <h1 className="font-bold text-slate-800 text-2xl">TruckWatch
           </h1>
           </div>
@@ -737,7 +739,7 @@ const Index = () => {
         <div className="max-w-7xl mx-auto grid md:grid-cols-4 gap-8">
           <div>
             <div className="flex items-center space-x-2 mb-4">
-              <Shield className="h-6 w-6 text-blue-400" />
+              <TruckWatchLogo className="text-blue-400" size="sm" />
               <span className="text-lg font-semibold">Driver Reputation Registry</span>
             </div>
             <p className="text-slate-400">
