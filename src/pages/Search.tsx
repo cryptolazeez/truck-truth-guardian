@@ -75,7 +75,7 @@ const Search = () => {
         return 'bg-gray-100 text-gray-800';
     }
   };
-  return <div className="min-h-screen bg-background">
+  return <div className="min-h-screen bg-zinc-50">
       {/* Navigation */}
       <nav className="bg-slate-800 text-white py-4 px-6 shadow-lg">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
