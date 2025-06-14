@@ -21,83 +21,103 @@ const TruckWatchLogo: React.FC<TruckWatchLogoProps> = ({ className = '', size = 
         xmlns="http://www.w3.org/2000/svg"
         className="w-full h-full"
       >
-        {/* Circular Background */}
-        <circle 
-          cx="50" 
-          cy="50" 
-          r="48" 
+        {/* Truck Cab */}
+        <rect 
+          x="15" 
+          y="30" 
+          width="25" 
+          height="30" 
           fill="currentColor" 
-          className="text-blue-600"
+          rx="3"
         />
         
-        {/* Inner Circle */}
+        {/* Truck Trailer */}
+        <rect 
+          x="40" 
+          y="35" 
+          width="40" 
+          height="25" 
+          fill="currentColor" 
+          rx="2"
+        />
+        
+        {/* Truck Windows */}
+        <rect 
+          x="18" 
+          y="33" 
+          width="8" 
+          height="8" 
+          fill="white" 
+          rx="1"
+        />
+        <rect 
+          x="28" 
+          y="33" 
+          width="8" 
+          height="8" 
+          fill="white" 
+          rx="1"
+        />
+        
+        {/* Trailer Details */}
+        <rect x="43" y="38" width="12" height="2" fill="white" rx="1"/>
+        <rect x="57" y="38" width="12" height="2" fill="white" rx="1"/>
+        <rect x="71" y="38" width="6" height="2" fill="white" rx="1"/>
+        
+        <rect x="43" y="45" width="12" height="2" fill="white" rx="1"/>
+        <rect x="57" y="45" width="12" height="2" fill="white" rx="1"/>
+        <rect x="71" y="45" width="6" height="2" fill="white" rx="1"/>
+        
+        <rect x="43" y="52" width="12" height="2" fill="white" rx="1"/>
+        <rect x="57" y="52" width="12" height="2" fill="white" rx="1"/>
+        <rect x="71" y="52" width="6" height="2" fill="white" rx="1"/>
+        
+        {/* Front Wheel */}
         <circle 
-          cx="50" 
-          cy="50" 
-          r="40" 
+          cx="30" 
+          cy="67" 
+          r="8" 
+          fill="currentColor"
+        />
+        <circle 
+          cx="30" 
+          cy="67" 
+          r="4" 
           fill="white"
         />
         
-        {/* Truck Silhouette - Centered */}
-        <g transform="translate(20, 35)">
-          {/* Truck Cab */}
-          <rect x="8" y="12" width="12" height="16" fill="currentColor" className="text-blue-600" rx="2"/>
-          {/* Truck Trailer */}
-          <rect x="20" y="14" width="20" height="14" fill="currentColor" className="text-blue-600" rx="1"/>
-          
-          {/* Wheels */}
-          <circle cx="16" cy="32" r="3" fill="currentColor" className="text-blue-600"/>
-          <circle cx="32" cy="32" r="3" fill="currentColor" className="text-blue-600"/>
-          <circle cx="16" cy="32" r="1.5" fill="white"/>
-          <circle cx="32" cy="32" r="1.5" fill="white"/>
-          
-          {/* Truck Window */}
-          <rect x="10" y="14" width="3" height="3" fill="white" rx="0.5"/>
-          <rect x="14" y="14" width="3" height="3" fill="white" rx="0.5"/>
-          
-          {/* Trailer Details */}
-          <rect x="22" y="16" width="6" height="1" fill="white"/>
-          <rect x="30" y="16" width="6" height="1" fill="white"/>
-          <rect x="22" y="20" width="6" height="1" fill="white"/>
-          <rect x="30" y="20" width="6" height="1" fill="white"/>
-        </g>
+        {/* Rear Wheels */}
+        <circle 
+          cx="55" 
+          cy="67" 
+          r="8" 
+          fill="currentColor"
+        />
+        <circle 
+          cx="55" 
+          cy="67" 
+          r="4" 
+          fill="white"
+        />
         
-        {/* Digital Eye/Camera in top right */}
-        <g transform="translate(65, 15)">
-          <circle cx="0" cy="0" r="8" fill="currentColor" className="text-blue-600"/>
-          <circle cx="0" cy="0" r="5" fill="white"/>
-          <circle cx="0" cy="0" r="3" fill="currentColor" className="text-blue-600"/>
-          <circle cx="0" cy="0" r="1" fill="white"/>
-          
-          {/* Camera brackets */}
-          <rect x="-2" y="-10" width="4" height="3" fill="currentColor" className="text-blue-600" rx="1"/>
-        </g>
+        <circle 
+          cx="70" 
+          cy="67" 
+          r="8" 
+          fill="currentColor"
+        />
+        <circle 
+          cx="70" 
+          cy="67" 
+          r="4" 
+          fill="white"
+        />
         
-        {/* Digital Signal/Data Streams */}
-        <g stroke="currentColor" strokeWidth="2" fill="none" className="text-blue-600">
-          {/* Signal lines from camera to truck */}
-          <path d="M60 20 Q55 25 45 30" opacity="0.7" strokeDasharray="2,2"/>
-          <path d="M62 25 Q57 30 47 35" opacity="0.5" strokeDasharray="2,2"/>
-          <path d="M58 18 Q53 23 43 28" opacity="0.9" strokeDasharray="2,2"/>
-        </g>
+        {/* Front Grille */}
+        <rect x="12" y="42" width="3" height="12" fill="currentColor" rx="1"/>
         
-        {/* Location Pin - small indicator */}
-        <g transform="translate(75, 75)">
-          <path 
-            d="M0 -8 C-3 -8 -5 -6 -5 -3 C-5 0 0 8 0 8 C0 8 5 0 5 -3 C5 -6 3 -8 0 -8 Z" 
-            fill="currentColor" 
-            className="text-blue-600"
-          />
-          <circle cx="0" cy="-3" r="2" fill="white"/>
-        </g>
-        
-        {/* Digital Corner Elements */}
-        <g stroke="currentColor" strokeWidth="1.5" fill="none" className="text-blue-600">
-          {/* Top left corner */}
-          <path d="M15 15 L15 20 M15 15 L20 15" opacity="0.6"/>
-          {/* Bottom right corner */}
-          <path d="M85 85 L85 80 M85 85 L80 85" opacity="0.6"/>
-        </g>
+        {/* Headlight */}
+        <circle cx="13" cy="38" r="2" fill="white"/>
       </svg>
     </div>
   );
